@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    });
+
+    function validateForm() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    if (!name || !email || !message) {
+        alert("All fields are required!");
+        return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+}
+    </script>
+    <style>
+        /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+}
+
+header {
+    background-color: #310101;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0.8rem;
+}
+
+.container img {
+    border-radius: 50px;
+    width: 100px;
+    transition: transform 0.5s;
+    object-fit:cover;
+    position: relative;
+    transition: transform 0.8s,width 2s ;
+    animation-name: img_anime;
+    animation-duration: 5s;
+}
+
+.container img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes img_anime 
+{
+   0%{
+    tap:100px;
+    left: 2000px;
+    transform: rotate(90deg)
+   } 
+
+   50%{
+    tap:30px;
+    left: 100px;
+    transform: rotate(180deg)
+   }
+
+   70%{
+    tap:500px;
+    left: 400px;
+    transform: rotate(360deg)
+   }
+
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 1rem;
+}
+
+.nav-links a {
+    color: #c6c16c;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links a:hover {
+    color: red;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.menu-toggle i {
+    color: #c6c16c;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #310101;
+    }
+
+    nav .container {
+        padding: 0 2rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+    .container img {
+    border-radius: 50px;
+    width: 70px;
+    transition: transform 0.5s;
+}
+}
+
+/* Home Details Section */
+.home-details {
+    text-align: center;
+    padding: 23vh 10px;
+}
+
+.home-details img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    filter: grayscale(100%) sepia(200%) hue-rotate(180deg) saturate(100%);
+}
+
+.home-details img:hover {
+    border: 10px solid #310101;
+    transform: scale(1.2);
+}
+
+.home-details h1 {
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.home-details p {
+    padding: 5px;
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.home-details p:hover {
+    background-image: url(./img/bgfire.jpg);
+}
+
+/* General Menu Styling */
+.menu {
+    padding: 10vh 2%;
+    text-align: center;
+    background-color: #1a1a1a; /* Optional: Add a background color to the menu section */
+}
+
+/* Main Heading */
+.menu h1 {
+    color:  #c6c16c;
+    margin: 2rem 0;
+    text-shadow:2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-size: 2.5rem;
+}
+
+/* Sub Heading */
+.menu .h2 {
+    color: yellow;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px #310101;
+    background: url('./img/bgfire.jpg') no-repeat center center;
+    background-size: cover;
+    display: inline-block;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgb(255, 0, 0), 
+                 0 0 5px rgb(0, 17, 255), 
+                 0 0 10px rgb(255, 13, 0);
+}
+
+/* Card Container */
+.menu-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+/* Individual Card Styling */
+.menu-cards .card {
+    flex: 1 1 calc(25% - 2rem);
+    max-width: 300px;
+    background-color: #393737;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    margin: 1rem;
+}
+
+.menu-cards .card:hover {
+    transform: scale(1.05);
+}
+
+.menu-cards .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-cards .card-body {
+    padding: 1rem;
+    background-color: #310101;
+}
+
+.menu-cards .card-title {
+    color: #c6c16c;
+    background-color: #310101;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.menu-cards .card-text {
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* View More Button */
+#view_more_a {
+    text-decoration: none;
+}
+
+.more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #c6c16c;
+    border-radius: 5px;
+    background-color: #310101;
+    color: #c6c16c;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+}
+
+.more i {
+    margin-right: 0.5rem;
+}
+
+.more:hover {
+    background-color: #c6c16c;
+    color: #310101;
+}
+
+/* Responsive Design */
+
+/* Tablets and Medium Screens */
+@media (max-width: 1200px) {
+    .menu-cards .card {
+        flex: 1 1 calc(33.333% - 2rem);
+    }
+}
+
+/* Large Phones and Small Tablets */
+@media (max-width: 768px) {
+    .menu-cards .card {
+        flex: 1 1 calc(50% - 2rem);
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+    .menu-cards .card {
+        flex: 1 1 100%;
+    }
+    
+    .menu h1 {
+        font-size: 2rem;
+    }
+    
+    .menu .h2 h2 {
+        font-size: 1.5rem;
+    }
+    
+    .more {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+
+/* About Us Section */
+
+/* Container for the entire About Us section */
+#about {
+    padding: 10vh 5%; /* Adds vertical and horizontal padding */
+    background-color: #1a1a1a; /* Optional: Background color for contrast */
+}
+
+/* Title Styling */
+#about .title h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #c6c16c; /* Gold color for the title */
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Enhances readability */
+}
+
+/* About Background Container */
+#about .aboutbg {
+    position: relative; /* Establishes positioning context for overlay */
+    max-width: 1200px; /* Limits the maximum width */
+    margin: 0 auto; /* Centers the container */
+    border-radius: 15px; /* Rounds the corners */
+    overflow: hidden; /* Hides overflow to maintain rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+}
+
+/* Background Image Styling */
+#about .aboutbg img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(70%); /* Darkens the image for text readability */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transitions */
+}
+
+/* Image Hover Effects */
+#about .aboutbg img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    filter: brightness(80%); /* Lightens the image slightly on hover */
+}
+
+/* Text Overlay Container */
+#about .text-overlay {
+    position: absolute; /* Positions the overlay over the image */
+    top: 50%; /* Vertically centers the overlay */
+    left: 50%; /* Horizontally centers the overlay */
+    transform: translate(-50%, -50%); /* Centers the overlay */
+    width: 90%; /* Width of the overlay */
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent background for text readability */
+    padding: 20px;
+    border-radius: 10px; /* Rounds the corners of the overlay */
+    box-sizing: border-box; /* Includes padding in width and height */
+    color: #fff; /* White text color */
+    text-align: center; /* Centers the text */
+    transition: background 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Story Title Styling */
+#about .text-overlay .story-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #c6c16c; /* Gold color for the story title */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Enhances readability */
+}
+
+/* Paragraph Styling */
+#about .text-overlay p {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-family: 'Times New Roman', Times, serif;
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 10px; /* Rounds the corners */
+    padding: 15px;
+    box-sizing: border-box; /* Includes padding in width */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Enhances readability */
+}
+
+/* Paragraph Hover Effect */
+#about .text-overlay p:hover {
+    background-image: url(./img/bgfire.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Responsive Design */
+
+/* Tablets and Medium Screens */
+@media (max-width: 992px) {
+    #about .title h1 {
+        font-size: 2.5rem;
+    }
+
+    #about .text-overlay {
+        width: 85%;
+        padding: 15px;
+    }
+
+    #about .text-overlay .story-title {
+        font-size: 1.8rem;
+    }
+
+    #about .text-overlay p {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+}
+
+/* Large Phones and Small Tablets */
+@media (max-width: 768px) {
+    #about .title h1 {
+        font-size: 2rem;
+    }
+
+    #about .text-overlay {
+        width: 80%;
+        padding: 10px;
+    }
+
+    #about .text-overlay .story-title {
+        font-size: 1.6rem;
+    }
+
+    #about .text-overlay p {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 576px) {
+    #about .title h1 {
+        font-size: 1.8rem;
+    }
+
+    #about .text-overlay {
+        width: 95%;
+        padding: 8px;
+    }
+
+    #about .text-overlay .story-title {
+        font-size: 1.4rem;
+    }
+
+    #about .text-overlay p {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+
+    #about .aboutbg img {
+        filter: brightness(80%);
+    }
+}
+
+/* Adding Color Highlights to Specific Sentences */
+
+/* Example: Styling the first line of the paragraph differently */
+#about .text-overlay p::first-line {
+    color: #ff4500; /* OrangeRed for the first line */
+    font-weight: bold;
+}
+
+/* Example: Adding a background highlight to the entire paragraph on hover */
+#about .text-overlay p:hover {
+    background-color: rgba(49, 1, 1, 0.7); /* Darker semi-transparent background */
+    background-image: none; /* Removes the background image on hover */
+}
+
+/* Note: For more precise control over specific sentences, consider adding classes or span elements within the HTML to target them directly with CSS. */
+
+
+/* Services Section */
+#services {
+    padding: 10vh 5%; /* Adds vertical and horizontal padding */
+    background-color: #1a1a1a; /* Optional: Background color for contrast */
+}
+
+#services h1 {
+    color:  #c6c16c;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 2.5rem; /* Slightly larger for readability */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.menu-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Increased gap between cards */
+    justify-content: center;
+    padding: 2rem 0; /* Added some space around the cards */
+}
+
+.menu-cards .card {
+    flex: 1 1 calc(33.333% - 2rem); /* More control over width */
+    max-width: 320px;
+    background-color: #333;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.menu-cards .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+}
+
+.menu-cards .card img {
+    width: 100%;
+    height: auto;
+}
+
+.menu-cards .card-body {
+    padding: 1.5rem;
+    color: #fff;
+}
+
+.menu-cards .card-body h5 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-cards .card-body p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .menu-cards .card {
+        flex: 1 1 calc(50% - 1.5rem); /* Two cards per row on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    #services h1 {
+        font-size: 2rem; /* Slightly smaller heading on smaller screens */
+    }
+    
+    .menu-cards .card {
+        flex: 1 1 calc(50% - 1.5rem); /* Still two cards per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-cards .card {
+        flex: 1 1 100%; /* One card per row on mobile */
+    }
+
+    #services {
+        padding: 7vh 1rem; /* Reduced padding for smaller screens */
+    }
+}
+
+
+/* hr */
+hr{
+    margin-top: 20px;
+    opacity: 0;
+}
+
+hr .about-hr{
+    margin-bottom: 20px;
+}
+
+hr .services-hr{
+    margin-bottom: 20px;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>
+            <header>
+                <nav>
+                    <div class="container">
+                        <a href="#home">
+                            <img src="./img/dk.jpg" alt="Devil's Kitchen Logo">
+                        </a>
+                        <div class="menu-toggle">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                        <ul class="nav-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#menu">Menu</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+</div>
+
+                                          <!-- home-details -->
+    <section id="home">
+    <div class="home-details">
+        <img  src="./img/dk.jpg" alt="homeimg">
+        <h1><span style="color: red;">Devil's </span><span style="color: yellow; padding-left: 5px;">Kitchen</span></h1>
+        <p><span style="display: block;">
+            Welcome to Devil's Kitchen, where bold flavors meet daring culinary creativity!
+            Prepare to ignite your senses as we serve up dishes that challenge the ordinary and excite the adventurous.
+            From sizzling entrées
+            to devilishly delicious desserts, every item on our menu is crafted to leave a lasting impression.
+
+            Step into an ambiance that blends dark elegance with vibrant energy—whether you're here for a casual
+            bite or a full dining experience, our passionate team is ready to make your visit unforgettable.
+            At Devil's Kitchen,
+            we don't just serve food; we serve excitement, flavor, and a touch of fire. Welcome to the heat!</p></span>
+    </div>
+    </section>
+    </div>
+</section>
+
+
+<!-- hr -->
+<hr id="menu">
+<!-- Menu Section -->
+<section>
+    <div class="menu">
+        <h1>Menu</h1>
+        <div class="h2">
+            <h2>Special Spicy Menu</h2>
+        </div>
+        <div class="menu-cards">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="./img/dish1.jpg" class="card-img-top" alt="Sweety Cream">
+                <div class="card-body">
+                    <h5 class="card-title">Sweety Cream</h5>
+                    <p class="card-text">
+                        A decadent delight of moist vanilla sponge, rich chocolate ganache, and creamy buttercream frosting, topped with colorful sprinkles and edible glitter.
+                    </p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="./img/dish2.jpg" class="card-img-top" alt="Sweety Cake">
+                <div class="card-body">
+                    <h5 class="card-title">Sweety Cake</h5>
+                    <p class="card-text">
+                        A luscious and velvety-smooth dessert topping, blending sweetened heavy cream, vanilla essence, and a hint of sugar, perfect for topping cakes, fruits, and other sweet treats.
+                    </p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="./img/dish3.jpg" class="card-img-top" alt="Sweety Bun">
+                <div class="card-body">
+                    <h5 class="card-title">Sweety Bun</h5>
+                    <p class="card-text">
+                        A soft, fluffy, and golden-brown pastry filled with sweet surprises like strawberry jam, chocolate chips, or creamy custard, topped with a delicate glaze and sprinkles.
+                    </p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+                <img src="./img/dish4.jpg" class="card-img-top" alt="Sweety Desert">
+                <div class="card-body">
+                    <h5 class="card-title">Sweety Desert</h5>
+                    <p class="card-text">
+                        A heavenly indulgence of layered treats, featuring crumbly cookies, rich chocolate mousse, velvety caramel, and toasted nuts, culminating in a sweet symphony of textures and flavors.
+                    </p>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+                <img src="./img/dish6.jpg" class="card-img-top" alt="Fresh Garden Salad">
+                <div class="card-body">
+                    <h5 class="card-title">Fresh Garden Salad</h5>
+                    <p class="card-text">
+                        A vibrant and refreshing mix of crisp lettuce, juicy tomatoes, crunchy cucumbers, sweet carrots, and crunchy croutons, topped with a zesty dressing and garnished with fragrant herbs.
+                    </p>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+                <img src="./img/dish7.jpg" class="card-img-top" alt="Hot Cake">
+                <div class="card-body">
+                    <h5 class="card-title">Hot Cake</h5>
+                    <p class="card-text">
+                        A fluffy, golden-brown pancake, bursting with warmth and sweetness, topped with melting butter, drizzled with pure maple syrup, and sprinkled with cinnamon sugar, served steaming hot.
+                    </p>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+                <img src="./img/dish9.jpg" class="card-img-top" alt="Juicy Burger">
+                <div class="card-body">
+                    <h5 class="card-title">Juicy Burger</h5>
+                    <p class="card-text">
+                        A savory, mouth-watering masterpiece featuring a tender beef patty, crispy bacon, melted cheddar cheese, fresh lettuce, ripe tomato, and creamy mayo, sandwiched between a soft, toasted brioche bun.
+                    </p>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+                <img src="./img/dish10.jpg" class="card-img-top" alt="Spicy Rice Gravy">
+                <div class="card-body">
+                    <h5 class="card-title">Spicy Rice Gravy</h5>
+                    <p class="card-text">
+                        A flavorful and aromatic fusion of sautéed onions, garlic, and jalapeños in a rich, velvety gravy, infused with Asian-inspired spices and herbs, served over a bed of steaming hot rice.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <a id="view_more_a" href="./cards.html">
+            <div class="more">
+                <i class="fas fa-arrow-right"></i>
+                <h2>View More</h2>
+            </div>
+        </a>
+    </div>
+</section>
+
+
+<!-- hr -->
+<hr class="about-hr" id="about">
+<!-- About Us Section -->
+<section id="about">
+    <div class="title">
+        <h1>About Us</h1>
+    </div>
+    <div class="about">
+        <div class="aboutbg">
+            <img src="./img/storybg.jpg" alt="Devil's Kitchen Background">
+            <div class="text-overlay">
+                <h1 class="story-title">The Legend of Devil’s Kitchen</h1>
+                <p>
+                    The Legend of Devil’s Kitchen
+
+                    In a small town nestled between ancient forests and mist-covered mountains, there stood a mysterious place known only to the bravest souls—Devil’s Kitchen. Local legend says that long ago, a wandering chef named Aswin made a pact with the devil himself. Aswin sought to create dishes so incredible, so indulgent, that they would capture the hearts and souls of all who tasted them.
+                    
+                    One fateful night, the devil appeared in his kitchen, offering the secret to culinary mastery in exchange for Aswin's soul. But Aswin was no fool; he outwitted the devil, demanding that he be allowed to remain in his kitchen to serve his dishes forever, free to cook, as long as no one dared to leave unsatisfied. The devil, amused by the challenge, agreed.
+                    
+                    From that moment on, Devil’s Kitchen was born. The doors open only at dusk, with an atmosphere that sends shivers down the spine. It’s said that every dish served carries a hint of the infernal magic Aswin unlocked, transforming even the simplest ingredients into decadent, otherworldly experiences.
+                    
+                    Those who enter feel the intense warmth of the flames, not just from the kitchen but from the legend itself. The chefs here are said to work with the spirit of Aswin, his recipes passed down through generations, each one elevating flavors to heavenly heights—with just a hint of wickedness.
+                    
+                    But beware: a seat at Devil’s Kitchen comes with one rule—no diner can leave until they are completely satisfied. The kitchen is rumored to know when someone is not fully content. It’s said strange things happen if that rule is broken—glasses shatter, candles flicker, and shadows dance around the room. Perhaps Aswin himself is watching, ensuring that his legacy remains intact.
+                    
+                    For those brave enough to dine at Devil’s Kitchen, they leave with a taste they’ll never forget and a story to tell for the rest of their lives.
+                    
+                    Dare to enter, but be warned: satisfaction isn’t just expected—it’s demanded.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- hr -->
+<hr class="services-hr" id="services">
+<!-- Services Section -->
+<section id="services">
+    <h1>Our Services</h1>
+    <div class="menu-cards">
+        <div class="card">
+            <img src="./img/our-services-welcome.jpg" alt="Dining Experience">
+            <div class="card-body">
+                <h5 class="card-title">Dining Experience</h5>
+                <p class="card-text">Enjoy a cozy and welcoming atmosphere for family gatherings and special occasions.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./img/delivery.jpg" alt="Takeout & Delivery">
+            <div class="card-body">
+                <h5 class="card-title">Takeout & Delivery</h5>
+                <p class="card-text">Craving our food at home? Order online for takeout or delivery!</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./img/catering.jpg" alt="Catering Services">
+            <div class="card-body">
+                <h5 class="card-title">Catering Services</h5>
+                <p class="card-text">Let us cater your next event with our delicious dishes tailored to your needs.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./img/private.jpg" alt="Private Events">
+            <div class="card-body">
+                <h5 class="card-title">Private Events</h5>
+                <p class="card-text">Host your special occasions with us. We provide customized menus for any event.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./img/foodteast.jpg" alt="Food Tasting">
+            <div class="card-body">
+                <h5 class="card-title">Food Tasting</h5>
+                <p class="card-text">Join us for exclusive food tasting events and discover new flavors.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./img/cookingclasses.jpg" alt="Cooking Classes">
+            <div class="card-body">
+                <h5 class="card-title">Cooking Classes</h5>
+                <p class="card-text">Learn from our chefs in interactive cooking classes suitable for all skill levels.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container py-5">
+        <h1 class="text-center" style= "color:#c6c16c; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">Contact Us</h1>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h3 class="text-warning">Get in Touch</h3>
+                <p>We’d love to hear from you! Whether you’re looking to book a table, have a special request, or just
+                    want to know more about our legend, feel free to reach out. The fires of Devil’s Kitchen are always
+                    burning, ready to welcome the boldest of diners.</p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-map-marker-alt"></i> 777 boba Street, mydearbootham village</li>
+                    <li><i class="fas fa-phone"></i> (+19)131313131313</li>
+                    <li><i class="fas fa-envelope"></i> aswinboba777@gmail.com</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <form onsubmit="return validateForm()">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+    </div>
+    <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" id="message" rows="3" placeholder="Your Message" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-danger">Submit</button>
+</form>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p>© 2024 Devil’s Kitchen. All Rights Reserved.</p>
+    <p>Follow Us: 
+        <a href="#" class="text-danger"><i class="fab fa-facebook-f"></i></a> 
+        <a href="#" class="text-danger"><i class="fab fa-instagram"></i></a> 
+        <a href="#" class="text-danger"><i class="fab fa-twitter"></i></a>
+    </p>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kQtW33rZJAHjgefvhyyzcGF6I95A6Yk2Fz3osz6PF0xjcqDScmR1CR5e8lc6pKIO"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+
+</body>
+
+</html>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devil's Kitchen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        });
+
+
+
+
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !message) {
+                alert("All fields are required!");
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+    </script>
+    <style>
+
+
+
+
+
+
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+        }
+
+        header {
+            background-color: #310101;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .container img {
+            border-radius: 50px;
+            width: 100px;
+            transition: transform 0.5s;
+        }
+
+        .container img:hover{
+            transform: scale(1.1);
+        }
+
+        .container .menu-title{
+            color: #c6c16c;
+            display: flex;
+            justify-content: space-between;
+            padding: auto;
+            margin: auto;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+       
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 1rem;
+        }
+
+        .nav-links a {
+            border-radius: 5px;
+            border: 1px solid #c6c16c;
+            background-color: #310101;
+            color: #c6c16c;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-links a:hover {
+            color: red;
+        }
+
+        
+        @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #310101;
+    }
+
+    nav .container {
+        padding: 0 2rem;
+    }
+        }
+
+    @media (max-width:480px) {
+        .container img {
+            border-radius: 50px;
+            width: 100px;
+            transition: transform 0.5s;
+        }
+
+        .container a img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .container img:hover{
+            transform: scale(1.1);
+        }
+
+    }    
+
+
+
+
+        /* rotate-img */
+        .rotate-img img{
+            border-radius: 200px;
+            height: 300px;
+            width: 300px;
+            margin-left: 40%;
+            margin-top: 20%;
+            position: fixed;
+            animation: spin 10s linear infinite;
+        }
+ 
+        @keyframes spin{
+            0%{
+                transform:rotate(0dge);
+            }
+            100%{
+                transform:rotate(360deg);
+            }
+        }
+
+        @media ( max-width:768px) {
+            .rotate-img img{
+                height: 200px;
+                width: 200px;
+                margin-left: 37%;
+                margin-top: 33%;
+                position: fixed;
+
+            }
+        }
+
+        
+        @media ( max-width:480px) {
+            .rotate-img img{
+                height: 150px;
+                width: 150px;
+                margin-left: 29%;
+                margin-top: 75%;
+                position: fixed;
+
+            }
+
+        }
+
+
+
+       /* General Menu Styling */
+.menu {
+    padding: 15vh 2%;
+    text-align: center;
+    background-color: #1a1a1a; /* Optional: Add a background color to the menu section */
+}
+
+/* Category Titles */
+.category-title {
+    color:#c6c16c;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px #310101;
+    background: url('./img/bgfire.jpg') no-repeat center center;
+    background-size: cover;
+    display: inline-block;
+    margin: 2rem 0;
+    text-shadow:2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-size: 2rem;
+}
+
+/* Card Container */
+.menu-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+/* Individual Card Styling */
+.card {
+    flex: 1 1 calc(25% - 1.5rem);
+    max-width: 300px;
+    background-color: #393737;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1rem;
+    background-color: #310101;
+}
+
+.card-title {
+    color: #c6c16c;
+    background-color: #310101;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.card-text {
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* View More Button */
+#view_more_a {
+    text-decoration: none;
+}
+
+.more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #c6c16c;
+    border-radius: 5px;
+    background-color: #310101;
+    color: #c6c16c;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+}
+
+.more i {
+    margin-right: 0.5rem;
+}
+
+.more:hover {
+    background-color: #c6c16c;
+    color: #310101;
+}
+
+/* Responsive Design */
+
+/* Large Desktops */
+@media (max-width: 1200px) {
+    .card {
+        flex: 1 1 calc(33.333% - 1.5rem);
+    }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+    .card {
+        flex: 1 1 calc(50% - 1.5rem);
+    }
+    
+    .category-title {
+        font-size: 1.8rem;
+        padding: 8px 16px;
+    }
+}
+
+/* Large Phones and Small Tablets */
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 calc(50% - 1.5rem);
+    }
+    
+    .category-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 576px) {
+    .menu {
+        padding: 15vh 1rem;
+    }
+
+    .category-title {
+        font-size: 1.5rem;
+        padding: 8px 16px;
+    }
+
+    .menu-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .card img {
+        height: 180px;
+    }
+
+    .card-body {
+        padding: 0.8rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-text {
+        font-size: 0.85rem;
+    }
+
+    .more {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+     /* footer */
+footer{
+     margin-top: 10vh;
+}
+
+
+  
+    </style>
+</head>
+
+
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <a href="#home">
+                    <img src="./img/dk.jpg" alt="Devil's Kitchen Logo">
+                </a>
+            
+                <div class="menu-title"><h1>Our Menu</h1></div>
+
+                <ul class="nav-links">
+                    <li><a href="./try.html">Go back</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+   <div class="rotate-img">
+    <img src="./img/spicy-round1.jpg" alt="">
+   </div>
+
+<!-- Menu Section -->
+<section>
+  <div class="menu">
+      <!-- Indian Spicy Menu -->
+      <div class="menu-category">
+          <h2 class="category-title">Indian Spicy Menu</h2>
+          <div class="menu-cards">
+              <!-- Card 1 -->
+              <div class="card">
+                  <img src="./img/indain-biriyani.jpg" class="card-img-top" alt="Spicy Biriyani">
+                  <div class="card-body">
+                      <h5 class="card-title">Spicy Biriyani</h5>
+                      <p class="card-text">
+                          A flavorful, aromatic South Asian rice-based dish made with a mix of spices, herbs, and marinated meat or vegetables, cooked to perfection.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                  <img src="./img/indian-butter-chickhen.jpg" class="card-img-top" alt="Butter Chicken">
+                  <div class="card-body">
+                      <h5 class="card-title">Butter Chicken</h5>
+                      <p class="card-text">
+                          A rich, creamy, and spicy Indian dish of marinated chicken cooked in a velvety tomato sauce, finished with a dollop of butter and a sprinkle of fresh cilantro.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                  <img src="./img/vadapav-indian.jpg" class="card-img-top" alt="Vada Pav">
+                  <div class="card-body">
+                      <h5 class="card-title">Vada Pav</h5>
+                      <p class="card-text">
+                          Crispy potato dumplings in a soft bread bun, served with spicy chutneys.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                  <img src="./img/gulab-jamun-iandian.jpg" class="card-img-top" alt="Gulab Jamun">
+                  <div class="card-body">
+                      <h5 class="card-title">Gulab Jamun</h5>
+                      <p class="card-text">
+                          Fried dumplings soaked in sweet rosewater syrup, a beloved Indian dessert.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Thailand Spicy Menu -->
+      <div class="menu-category">
+          <h2 class="category-title">Thailand Spicy Menu</h2>
+          <div class="menu-cards">
+              <!-- Card 1 -->
+              <div class="card">
+                  <img src="./img/tom-yum-tai.jpg" class="card-img-top" alt="Tom Yum Goong">
+                  <div class="card-body">
+                      <h5 class="card-title">Tom Yum Goong</h5>
+                      <p class="card-text">
+                          Spicy and sour Thai soup made with succulent shrimp, lemongrass, lime leaves, mushrooms, and chili peppers in a fragrant coconut milk broth.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                  <img src="./img/druken-noodles-tai.jpg" class="card-img-top" alt="Drunken Noodles">
+                  <div class="card-body">
+                      <h5 class="card-title">Drunken Noodles</h5>
+                      <p class="card-text">
+                          Savory stir-fried noodles with a blend of spicy, tangy, and umami flavors, featuring fresh veggies and proteins.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                  <img src="./img/red-chilli-tai.jpg" class="card-img-top" alt="Thai Red Chili">
+                  <div class="card-body">
+                      <h5 class="card-title">Thai Red Chili</h5>
+                      <p class="card-text">
+                          A bold and spicy dish, featuring vibrant red chilies, aromatic herbs, and rich coconut milk for a perfect balance of heat and flavor.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                  <img src="./img/mango-rice-tai.jpg" class="card-img-top" alt="Mango Sticky Rice">
+                  <div class="card-body">
+                      <h5 class="card-title">Mango Sticky Rice</h5>
+                      <p class="card-text">
+                          A sweet and creamy Thai dessert, combining ripe mangoes with rich coconut-flavored sticky rice.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Korean Spicy Menu -->
+      <div class="menu-category">
+          <h2 class="category-title">Korean Spicy Menu</h2>
+          <div class="menu-cards">
+              <!-- Card 1 -->
+              <div class="card">
+                  <img src="./img/dish6.jpg" class="card-img-top" alt="Kimchi">
+                  <div class="card-body">
+                      <h5 class="card-title">Kimchi</h5>
+                      <p class="card-text">
+                          Traditional Korean dish of spicy, tangy fermented vegetables, packed with bold flavors and probiotics.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                  <img src="./img/bijimbap-korea.jpg" class="card-img-top" alt="Bibimbap">
+                  <div class="card-body">
+                      <h5 class="card-title">Bibimbap</h5>
+                      <p class="card-text">
+                          Colorful Korean rice bowl topped with sautéed vegetables, marinated meat, a fried egg, and spicy gochujang sauce.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                  <img src="./img/tteokbokki-korea.jpg" class="card-img-top" alt="Tteokbokki">
+                  <div class="card-body">
+                      <h5 class="card-title">Tteokbokki</h5>
+                      <p class="card-text">
+                          Chewy rice cakes stir-fried in a bold and spicy gochujang sauce, often served with fish cakes, scallions, and boiled eggs.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                  <img src="./img/patbingsu-korea.jpg" class="card-img-top" alt="Patbingsu">
+                  <div class="card-body">
+                      <h5 class="card-title">Patbingsu</h5>
+                      <p class="card-text">
+                          Refreshing Korean dessert made of finely shaved ice topped with sweetened red beans, fruits, condensed milk, and a drizzle of syrup.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Szechuan Spicy Menu -->
+      <div class="menu-category">
+          <h2 class="category-title">Szechuan Spicy Menu</h2>
+          <div class="menu-cards">
+              <!-- Card 1 -->
+              <div class="card">
+                  <img src="./img/maoo-tofu-korea.jpg" class="card-img-top" alt="Mapo Tofu">
+                  <div class="card-body">
+                      <h5 class="card-title">Mapo Tofu</h5>
+                      <p class="card-text">
+                          Classic Sichuan dish featuring soft tofu simmered in a spicy, aromatic sauce made with minced meat, fermented black beans, and a fragrant blend of spices.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                  <img src="./img/b-fish-sz.jpg" class="card-img-top" alt="Boiled Fish in Chili Oil">
+                  <div class="card-body">
+                      <h5 class="card-title">Boiled Fish in Chili Oil</h5>
+                      <p class="card-text">
+                          Fiery Sichuan dish featuring tender fish fillets poached in a savory broth and topped with a rich, spicy chili oil, garlic, and aromatic herbs.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                  <img src="./img/sz-p-chicken-sz.jpg" class="card-img-top" alt="Szechuan Pepper Chicken">
+                  <div class="card-body">
+                      <h5 class="card-title">Szechuan Pepper Chicken</h5>
+                      <p class="card-text">
+                          Tender chicken stir-fried with vibrant vegetables and coated in a spicy, numbing sauce made with Szechuan peppercorns, garlic, and soy sauce.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                  <img src="./img/swabbery-sz.jpg" class="card-img-top" alt="Sichuan Strawberry Cake">
+                  <div class="card-body">
+                      <h5 class="card-title">Sichuan Strawberry Cake</h5>
+                      <p class="card-text">
+                          Delightful dessert combining layers of light, fluffy sponge cake with fresh strawberries and a hint of Sichuan pepper.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Jamaica Spicy Menu -->
+      <div class="menu-category">
+          <h2 class="category-title">Jamaica Spicy Menu</h2>
+          <div class="menu-cards">
+              <!-- Card 1 -->
+              <div class="card">
+                  <img src="./img/fired-plantaines.ja.jpg" class="card-img-top" alt="Fried Plantains">
+                  <div class="card-body">
+                      <h5 class="card-title">Fried Plantains</h5>
+                      <p class="card-text">
+                          Golden, crispy plantains drizzled with a tangy and spicy sauce made from fresh Scotch bonnet peppers, garlic, and vinegar.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                  <img src="./img/coc-rum-cake-ja.jpg" class="card-img-top" alt="Coconut Rum Cake">
+                  <div class="card-body">
+                      <h5 class="card-title">Coconut Rum Cake</h5>
+                      <p class="card-text">
+                          Moist and flavorful dessert made with rich coconut milk, shredded coconut, and a splash of rum, topped with a sweet rum glaze.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                  <img src="./img/ackke-ja.jpg" class="card-img-top" alt="Ackee and Saltfish">
+                  <div class="card-body">
+                      <h5 class="card-title">Ackee and Saltfish</h5>
+                      <p class="card-text">
+                          Jamaica's national dish featuring sautéed ackee fruit and salted cod cooked with onions, tomatoes, and Scotch bonnet peppers.
+                      </p>
+                  </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                  <img src="./img/sz-p-chicken-sz.jpg" class="card-img-top" alt="Szechuan Pepper Chicken">
+                  <div class="card-body">
+                      <h5 class="card-title">Szechuan Pepper Chicken</h5>
+                      <p class="card-text">
+                          Tender chicken stir-fried with vibrant vegetables and coated in a spicy, numbing sauce made with Szechuan peppercorns, garlic, and soy sauce.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Optional: View More Button -->
+      <a id="view_more_a" href="./cards.html">
+          <div class="more">
+              <i class="fas fa-arrow-right"></i>
+              <h2>View More</h2>
+          </div>
+      </a>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p>© 2024 Devil’s Kitchen. All Rights Reserved.</p>
+    <p>Follow Us: 
+        <a href="#" class="text-danger"><i class="fab fa-facebook-f"></i></a> 
+        <a href="#" class="text-danger"><i class="fab fa-instagram"></i></a> 
+        <a href="#" class="text-danger"><i class="fab fa-twitter"></i></a>
+    </p>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kQtW33rZJAHjgefvhyyzcGF6I95A6Yk2Fz3osz6PF0xjcqDScmR1CR5e8lc6pKIO"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
